@@ -1,6 +1,7 @@
 package com.sgmarghade;
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -13,9 +14,12 @@ public class RoundRobinService<T>
     private BlockingQueue<T> queue ;
     private ReentrantLock lock = new ReentrantLock();
 
-    public RoundRobinService(List<T> objectList){
+    public RoundRobinService(List<T> objectList,boolean shuffleObjects){
 
         this.queue = new LinkedBlockingDeque<T>(objectList.size());
+        if(shuffleObjects) {
+            Collections.shuffle(objectList);
+        }
         initializeQueue(objectList);
     }
 

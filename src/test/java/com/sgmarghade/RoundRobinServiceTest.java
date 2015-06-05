@@ -21,7 +21,7 @@ public class RoundRobinServiceTest {
         list.add("String2");
         list.add("String3");
         list.add("String4");
-        service = new RoundRobinService<String>(list);
+        service = new RoundRobinService<String>(list,false);
     }
 
     @Test
